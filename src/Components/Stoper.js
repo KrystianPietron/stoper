@@ -13,7 +13,7 @@ const style = {
         flexDirection: 'column'
     },
     buttons: {
-        margin: 15
+        margin: 10
     }
 }
 
@@ -24,10 +24,10 @@ class Stoper extends React.Component {
             <Paper
                 style={style.paper}>
                 <h2
-                    style={{ fontSize: '100px', color: '#00BCD4' }}
+                    style={{ fontSize: '500%', color: '#00BCD4' }}
                 >STOPER</h2>
                 <div
-                    style={{ fontSize: '200px', color: '#00BCD4' }}
+                    style={{ fontSize: '500%', color: '#00BCD4' }}
                 >
                     <strong>{`${this.props.min}:${this.props.sec}:${this.props.msec}`}</strong>
                 </div>

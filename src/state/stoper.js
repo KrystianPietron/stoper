@@ -12,7 +12,7 @@ const INITIAL_STATE = {
 let interval = null
 
 export const stopAsyncAction = () => (dispatch, getState) => {
-    dispatch(clearInterval(interval))
+    clearInterval(interval)
     dispatch(stopStoper())
 }
 
