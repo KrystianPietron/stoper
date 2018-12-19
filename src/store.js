@@ -1,10 +1,9 @@
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-
-// import reducers here
+import stoper from './state/stoper'
 
 const reducer = combineReducers({
-    // reducers here
+    stoper
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
