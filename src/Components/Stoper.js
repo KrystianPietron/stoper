@@ -2,12 +2,12 @@ import React from 'react'
 import Button from '../elements/Button'
 import Paper from 'material-ui/Paper'
 import { connect } from 'react-redux'
-import { startAction, stopAction, resetStoper } from '../state/stoper';
+import { startAction, stopAsyncAction, resetStoper } from '../state/stoper';
 
 const style = {
     paper: {
         margin: 30,
-        padding: 30,
+        padding: 10,
         display: 'flex',
         alignItems: 'center',
         flexDirection: 'column'
@@ -19,36 +19,37 @@ const style = {
 
 class Stoper extends React.Component {
 
-    componentWillUnmount() {
-        this.props.stop()
-    }
-
-
     render() {
         return (
-        <Paper
-            style={style.paper}>
-            <div>
-                {`${this.props.min}:${this.props.sec}:${this.props.msec}`}
-            </div>
-            <div>
-                <Button
-                    style={style.buttons}
-                    label='START'
-                    onClick={this.props.start}
-                />
-                <Button
-                    style={style.buttons}
-                    label='STOP'
-                    onClick={this.props.stop}
-                />
-                <Button
-                    style={style.buttons}
-                    label='RESET'
-                    onClick={this.props.reset}
-                />
-            </div>
-        </Paper>)
+            <Paper
+                style={style.paper}>
+                <h2
+                    style={{ fontSize: '100px', color: '#00BCD4' }}
+                >STOPER</h2>
+                <div
+                    style={{ fontSize: '200px', color: '#00BCD4' }}
+                >
+                    <strong>{`${this.props.min}:${this.props.sec}:${this.props.msec}`}</strong>
+                </div>
+                <div>
+                    <Button
+                        style={style.buttons}
+                        label='START'
+                        onClick={this.props.start}
+                    />
+                    <Button
+                        style={style.buttons}
+                        label='STOP'
+                        onClick={this.props.stop}
+                    />
+                    <Button
+                        style={style.buttons}
+                        label='RESET'
+                        onClick={this.props.reset}
+                    />
+                </div>
+            </Paper>
+        )
     }
 }
 
@@ -60,7 +61,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     start: () => dispatch(startAction()),
-    stop: () => dispatch(stopAction()),
+    stop: () => dispatch(stopAsyncAction()),
     reset: () => dispatch(resetStoper())
 })
 

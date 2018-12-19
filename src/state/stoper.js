@@ -8,7 +8,14 @@ const INITIAL_STATE = {
     msec: 0,
 }
 
+
 let interval = null
+
+export const stopAsyncAction = () => (dispatch, getState) => {
+    dispatch(clearInterval(interval))
+    dispatch(stopStoper())
+}
+
 export const startAction = () => (dispatch, getState) => {
     let { stoper: { msec, sec, min } } = getState()
     msec = 0
@@ -17,7 +24,7 @@ export const startAction = () => (dispatch, getState) => {
     dispatch(startStoper(msec, sec, min))
     clearInterval(interval)
     interval = setInterval(() => {
-        
+
         if (msec !== 100) {
             msec++
             dispatch(startStoper(msec, sec, min))
@@ -34,11 +41,6 @@ export const startAction = () => (dispatch, getState) => {
         }
     }, 10
     )
-}
-
-export const stopAction = () => (dispatch, getState) => {
-    dispatch(stopStoper())
-    dispatch(clearInterval(interval))
 }
 
 const stopStoper = () => ({
